@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: StepAction
+metadata:
+  name: hello
+spec:
+  params:
+    - name: message
+      type: string
+  image: ubuntu
+  command:
+    - /bin/sh
+    - -c
+  args:
+    - echo "Hello ${params.message}"
