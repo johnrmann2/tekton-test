@@ -11,4 +11,4 @@ spec:
     - /bin/sh
     - -c
   args:
-    - echo "Hello ${params.message}"
+    - echo "Hello StepAction"
