@@ -1,0 +1,30 @@
+  - name: ultimate-answer
+    runAfter:
+      - one
+      - two
+    taskSpec:
+      params:
+      - name: num3
+        type: string
+      - name: num4
+        type: string
+      steps:
+      - name: math
+        params:
+        - name: num1
+          value: "$(params.num3)"
+        - name: num2
+          value: "$(params.num4)"
+        ref:
+          resolver: git
+          params:
+            - name: url
+              value: https://github.com/johnrmann2/tekton-test.git
+            - name: revision
+              value: main
+            - name: pathInRepo
+              value: add.yaml
+      - name: print
+        image: ubuntu
+        script: |
+          cat /tekton/results/sum
