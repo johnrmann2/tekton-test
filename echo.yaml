@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1alpha1
+kind: StepAction
+metadata:
+  name: hello
+spec:
+  params:
+    - name: message
+      type: string
+  results:
+    - name: output
+      description: What was echoed.
+  image: ubuntu
+  script: |
+    echo "$message"
+    echo "$message" > $(results.output.path)
