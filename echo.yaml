@@ -15,4 +15,4 @@ spec:
     - -c
   args:
     - echo "$message"
-      echo "$message" > $(results.output.path)
+      echo "$message" > /tekton/results/output
