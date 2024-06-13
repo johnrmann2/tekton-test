@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: StepAction
+metadata:
+  name: add
+spec:
+  params:
+    - name: x
+      type: string
+    - name: y
+      type: string
+  results:
+    - name: result
+      description: Sum of two numbers.
+  image: ubuntu
+  script: |
+    x1 = $(echo "$x")
+    y1 = $(echo "$y")
+    sum = $((x1 + y1))
+    echo "$sum" > $(results.sum.path)
