@@ -4,9 +4,9 @@ metadata:
   name: add
 spec:
   params:
-    - name: x
+    - name: num1
       type: string
-    - name: y
+    - name: num2
       type: string
   results:
     - name: sum
@@ -16,7 +16,7 @@ spec:
     - /bin/sh
     - -c
   args:
-    - x1 = $(echo "$x")
-      y1 = $(echo "$y")
+    - x1 = $(echo "$num1")
+      y1 = $(echo "$num2")
       sum = $((x1 + y1))
       echo "$sum" > /tekton/results/sum
