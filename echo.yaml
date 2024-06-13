@@ -10,6 +10,9 @@ spec:
     - name: output
       description: What was echoed.
   image: ubuntu
-  script: |
-    echo "$message"
-    echo "$message" > $(results.output.path)
+  command:
+    - /bin/sh
+    - -c
+  args:
+    - echo "$message"
+      echo "$message" > $(results.output.path)
