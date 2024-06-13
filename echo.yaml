@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: StepAction
 metadata:
-  name: hello
+  name: echo
 spec:
   params:
     - name: message
