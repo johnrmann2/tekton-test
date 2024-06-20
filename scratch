@@ -1,20 +1,15 @@
-  - name: ultimate-answer
-    runAfter:
-      - one
-      - two
+# Edit this YAML to configure your pipeline.
+tasks:
+  - name: one
     taskSpec:
-      params:
-      - name: num3
-        type: string
-      - name: num4
-        type: string
+      results:
+      - name: num1
       steps:
-      - name: math
+      - name: alpha
+        timeout: 15s
         params:
-        - name: num1
-          value: "$(params.num3)"
-        - name: num2
-          value: "$(params.num4)"
+        - name: message
+          value: "Alpha"
         ref:
           resolver: git
           params:
@@ -23,8 +18,92 @@
             - name: revision
               value: main
             - name: pathInRepo
-              value: add.yaml
-      - name: print
-        image: ubuntu
+              value: hello.yaml
+      - image: ubuntu
+        name: bravo
         script: |
-          cat /tekton/results/sum
+          echo "Hello Bravo"
+      - image: ubuntu
+        name: charlie
+        script: |
+          echo "Hello Charlie"
+      - image: ubuntu
+        name: delta
+        script: |
+          echo "Hello Delta"
+      - image: ubuntu
+        name: echo
+        script: |
+          echo "Hello Echo"
+          echo "23" > /tekton/results/num1
+  - name: two
+    taskSpec:
+      results:
+      - name: num2
+      steps:
+      - image: ubuntu
+        name: foxtrot
+        script: |
+          echo "Hello Foxtrot"
+      - image: ubuntu
+        name: golf
+        script: |
+          echo "Hello Golf"
+      - image: ubuntu
+        name: hotel
+        script: |
+          echo "Hello Hotel"
+      - image: ubuntu
+        name: india
+        script: |
+          echo "Hello India"
+      - image: ubuntu
+        name: juliet
+        script: |
+          echo "Hello Juliet"
+      - image: ubuntu
+        name: kilo
+        script: |
+          echo "Hello Kilo"
+      - image: ubuntu
+        name: lima
+        script: |
+          echo "Hello Lima"
+      - image: ubuntu
+        name: mike
+        script: |
+          echo "Hello Mike"
+      - image: ubuntu
+        name: november
+        script: |
+          echo "Hello November"
+      - image: ubuntu
+        name: oscar
+        script: |
+          echo "Hello Oscar"
+      - image: ubuntu
+        name: papa
+        script: |
+          echo "Hello Papa"
+          echo "19" > /tekton/results/num2
+  - name: three
+    runAfter: ["one", "two"]
+    taskSpec:
+      results:
+      - name: answer
+      steps:
+        - name: math
+          params:
+          - name: num1
+            value: "19"
+          - name: num2
+            value: "23"
+          ref:
+            resolver: git
+            params:
+              - name: url
+                value: https://github.com/johnrmann2/tekton-test.git
+              - name: revision
+                value: main
+              - name: pathInRepo
+                value: test.yaml
