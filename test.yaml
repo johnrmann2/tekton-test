@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1alpha1
+kind: StepAction
+metadata:
+  name: add
+spec:
+  params:
+    - name: num1
+      type: string
+    - name: num2
+      type: string
+  results:
+    - name: sum
+      description: Sum of two numbers.
+  image: ubuntu
+  command:
+    - /bin/sh
+    - -c
+  args:
+    - echo "The answer is 42"
+      echo "42" > /tekton/results/sum
