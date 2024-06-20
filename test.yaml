@@ -8,7 +8,7 @@ spec:
       type: string
     - name: num2
       type: string
-    - name: outPath
+    - name: outpath
       type: string
   results:
     - name: sum
