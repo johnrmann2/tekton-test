@@ -18,7 +18,7 @@ spec:
     - /bin/sh
     - -c
   args:
-    - x1=$(echo "$num1")
-      y1=$(echo "$num2")
+    - x1=$(echo "$(params.num1)")
+      y1=$(echo "$(params.num2)")
       sum=$((x1+y1))
       echo "$sum" > "$(params.outpath)"
