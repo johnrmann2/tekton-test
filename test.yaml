@@ -18,5 +18,7 @@ spec:
     - /bin/sh
     - -c
   args:
-    - echo "The answer is 42"
-      echo "42" > "$(params.outpath)"
+    - x1=$(echo "$num1")
+      y1=$(echo "$num2")
+      sum=$((x1+y1))
+      echo "$sum" > "$(params.outpath)"
