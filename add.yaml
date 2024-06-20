@@ -16,7 +16,7 @@ spec:
     - /bin/sh
     - -c
   args:
-    - x1 = $(echo "$num1")
-      y1 = $(echo "$num2")
-      sum = $((x1 + y1))
+    - x1=$(echo "$num1")
+      y1=$(echo "$num2")
+      sum=$((x1+y1))
       echo "$sum" > /tekton/results/sum
