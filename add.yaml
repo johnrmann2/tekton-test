@@ -19,4 +19,5 @@ spec:
     - x1=$(echo "$num1")
       y1=$(echo "$num2")
       sum=$((x1+y1))
+      echo "The answer is $sum"
       echo "$sum" > /tekton/results/sum
