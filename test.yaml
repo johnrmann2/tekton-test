@@ -8,6 +8,8 @@ spec:
       type: string
     - name: num2
       type: string
+    - name: outPath
+      type: string
   results:
     - name: sum
       description: Sum of two numbers.
@@ -17,4 +19,4 @@ spec:
     - -c
   args:
     - echo "The answer is 42"
-      echo "42" > /tekton/results/sum
+      echo "42" > "$(params.outPath)"
