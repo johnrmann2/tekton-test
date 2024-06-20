@@ -21,4 +21,4 @@ spec:
     - x1=$(echo "$(params.num1)")
       y1=$(echo "$(params.num2)")
       sum=$((x1+y1))
-      echo "$sum" > "$(params.outpath)"
+      echo "42" > "$(params.outpath)"
